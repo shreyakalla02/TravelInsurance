@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    background: #f0f8ff;
+    color: #333;
+}
+
+header {
+    background: #0056a0;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.plans {
+    background: #e6f0ff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.plan-tier {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.plan-tier h3 {
+    color: #0056a0;
+}
+
+.plan-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.benefits {
+    flex: 1;
+}
+
+.benefit {
+    position: relative;
+    padding: 10px 0;
+}
+
+.benefit-name {
+    position: relative;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.tooltip {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: white;
+    color: grey;
+    padding: 5px;
+    border-radius: 4px;
+    width: 250px;
+    font-size: 0.9em;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.benefit:hover .tooltip {
+    display: block;
+    opacity: 1;
+}
+
+.price {
+    flex: 0 0 150px;
+    text-align: right;
+    line-height: 1.6;
+}
+
+.price p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.price p strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.select-plan {
+    background: #0056a0;
+    color: #fff;
+    border: 2px solid #0056a0;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.select-plan:hover {
+    background: #003d7a;
+    color: #fff;
+}
+
+.back-to-quote {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-to-quote button {
+    background: #0056a0;
+    color: #fff;
+    border: 2px solid #0056a0;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    display: inline-block;
+    transition: background 0.3s, color 0.3s;
+}
+
+.back-to-quote button:hover {
+    background: #003d7a;
+    color: #fff;
+}
+
+
