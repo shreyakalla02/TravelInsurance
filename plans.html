@@ -1,42 +1,100 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tripago Travel Insurance Plans</title>
     <link rel="stylesheet" href="./static/css/plans.css">
+    <script>
+        function calculatePremium() {
+            const tripCostElement = document.getElementById('trip-cost');
+            const tripCostText = tripCostElement.textContent;
+            const tripCost = parseFloat(tripCostText.replace('€', '').replace(',', ''));
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const plan = urlParams.get('coverage_plan') || 'basic';
+
+            let basicPercentage = 0.05
+            let standardPercentage = 0.07
+            let premiumPercentage = 0.10
+
+
+            const estimatedPremium = tripCost * basicPercentage;
+            let standardPremium = tripCost * standardPercentage;
+            let premiumPremium = tripCost * premiumPercentage;
+
+
+            console.log(`Plan: ${plan}`);
+            console.log(`Percentage: ${basicPercentage}`);
+            console.log(`Trip Cost: €${tripCost}`);
+            console.log(`€${estimatedPremium.toFixed(2)}`);
+
+            document.getElementById('standard-premium').textContent = `€${standardPremium.toFixed(2)}`;
+            document.getElementById('premium-premium').textContent = `€${premiumPremium.toFixed(2)}`;
+
+
+            document.getElementById('premium').textContent = `€${estimatedPremium.toFixed(2)}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', calculatePremium);
+    </script>
 </head>
+
 <body>
-    <header>
+    <header id = "new">
         <div class="container">
-            <h1>Tripago Travel Insurance Plans</h1>
+            <h1>Tripago Travel Insurance</h1>
             <p>Choose the coverage that fits your needs!</p>
         </div>
     </header>
 
     <main class="container">
         <section class="plans">
-            <h2>Coverage Plans</h2>
+            <h2 style="text-align: center;">Coverage Plans</h2>
+            <h3>Summary</h3>
+            <p><strong>Age:</strong> 22 years old | <strong>Destination:</strong> Barcelona, Spain | <strong>Trip
+                    Duration:</strong> 7 days</p>
+            <p><strong>Health Condition:</strong> No underlying health conditions</p>
+            <p><strong>Accommodation Cost:</strong> €250 per night × 7 = €1,750</p>
+            <p><strong>Flight Cost:</strong> €200 (return)</p>
+            <p id="trip-cost-summary">
+                <strong>Total Trip Cost:</strong> €1,750 (Accommodation) + €200 (Flight) = <span
+                    id="trip-cost">€1,950</span>
+            </p>
 
             <div class="plan-tier">
                 <h3>Tier 1 - Basic Coverage</h3>
                 <div class="plan-content">
                     <div class="benefits">
                         <div class="benefit">
-                            <span class="benefit-name">Medical Emergencies</span>
+                            <span class="benefit-name">Medical Emergencies:</span>
+                            <span class="coverage-amount">€50,000</span>
                             <span class="tooltip">Covers expenses for unexpected medical issues while traveling.</span>
                         </div>
                         <div class="benefit">
-                            <span class="benefit-name">Trip Cancellations</span>
-                            <span class="tooltip">Reimburses you for non-refundable trip costs if you have to cancel your trip.</span>
+                            <span class="benefit-name">Trip Cancellations:</span>
+                            <span class="coverage-amount">€1,950</span>
+                            <span class="tooltip">Reimburses you for non-refundable trip expenses if you need to cancel
+                                your trip due to unforeseen circumstances.</span>
                         </div>
                         <div class="benefit">
-                            <span class="benefit-name">Lost Luggage</span>
-                            <span class="tooltip">Compensates you if your luggage is lost or delayed.</span>
+                            <span class="benefit-name">Lost or Delayed Luggage:</span>
+                            <span class="coverage-amount">€1,000</span>
+                            <span class="tooltip">Provides compensation for lost or delayed baggage.</span>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-name">Personal Liability:</span>
+                            <span class="coverage-amount">€100,000</span>
+                            <span class="tooltip">Protects you if you’re held legally responsible for injury or
+                                damage.</span>
                         </div>
                     </div>
                     <div class="price">
-                        <p><strong>Your Total</strong></p>
-                        <p>$50 - $100</p>
+                        <b style="margin-left: 190px;">
+                            <p>Estimated Premium:</p>
+                        </b>
+                        
+                        <p id="premium">€0.00</p>
                         <button class="select-plan">Select this Plan</button>
                     </div>
                 </div>
@@ -48,20 +106,37 @@
                     <div class="benefits">
                         <div class="benefit">
                             <span class="benefit-name">Emergency Evacuation</span>
-                            <span class="tooltip">Covers transportation costs to the nearest medical facility in case of an emergency.</span>
+                            <span class="tooltip">Covers transportation costs to the nearest medical facility in case of
+                                a medical emergency.</span>
                         </div>
                         <div class="benefit">
                             <span class="benefit-name">Travel Delay</span>
-                            <span class="tooltip">Provides compensation for expenses due to travel delays.</span>
+                            <span class="tooltip">Provides compensation for additional expenses incurred due to travel
+                                delays.</span>
                         </div>
                         <div class="benefit">
                             <span class="benefit-name">Rental Car Damage</span>
-                            <span class="tooltip">Covers damage to rental cars during your trip.</span>
+                            <span class="tooltip">Covers costs for damage to rental cars during your trip.</span>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-name">Trip Cancellation</span>
+                            <span class="tooltip">Reimburses you for non-refundable trip expenses if you need to cancel
+                                your trip.</span>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-name">Lost or Delayed Baggage</span>
+                            <span class="tooltip">Provides compensation for lost or delayed baggage.</span>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-name">Medical Expenses</span>
+                            <span class="tooltip">Covers expenses for unexpected medical issues.</span>
                         </div>
                     </div>
                     <div class="price">
-                        <p><strong>Your Total</strong></p>
-                        <p>$100 - $200</p>
+                        <b style="margin-left: 190px;">
+                            <p>Estimated Premium:</p>
+                        </b>
+                        <p id="standard-premium">€0.00</p>
                         <button class="select-plan">Select this Plan</button>
                     </div>
                 </div>
@@ -72,30 +147,45 @@
                 <div class="plan-content">
                     <div class="benefits">
                         <div class="benefit">
-                            <span class="benefit-name">Pre-existing Conditions</span>
-                            <span class="tooltip">Covers medical conditions that existed before the start of the policy.</span>
+                            <span class="benefit-name">24/7 Travel Assistance</span>
+                            <span class="tooltip">Access to a global network of assistance services available 24/7 for
+                                emergencies.</span>
+                        </div>
+                        <div class="benefit">
+                            <span class="benefit-name">Cancel for Any Reason</span>
+                            <span class="tooltip">Allows you to cancel your trip for any reason, with partial
+                                reimbursement.</span>
                         </div>
                         <div class="benefit">
                             <span class="benefit-name">Trip Interruption</span>
-                            <span class="tooltip">Reimburses you for unused trip costs if your trip is interrupted.</span>
+                            <span class="tooltip">Reimburses you for unused trip costs if your trip is
+                                interrupted.</span>
                         </div>
                         <div class="benefit">
                             <span class="benefit-name">Higher Medical Limits</span>
                             <span class="tooltip">Provides higher coverage limits for medical expenses.</span>
                         </div>
+                        <div class="benefit">
+                            <span class="benefit-name">Extended Coverage for Baggage Loss</span>
+                            <span class="tooltip">Provides higher compensation limits for lost, stolen, or delayed
+                                baggage.</span>
+                        </div>
                     </div>
                     <div class="price">
-                        <p><strong>Your Total</strong></p>
-                        <p>$200 - $300</p>
+                        <b style="margin-left: 190px;">
+                            <p>Estimated Premium:</p>
+                        </b>
+                        <p id="premium-premium">€0.00</p>
                         <button class="select-plan">Select this Plan</button>
                     </div>
                 </div>
             </div>
 
-            <div class="back-to-quote">
-                <button onclick="window.location.href='index.html'">Back to Quote</button>
+            <div class="back-to-homepage">
+                <button onclick="window.location.href='index.html'">Back to Homepage</button>
             </div>
         </section>
     </main>
 </body>
+
 </html>
