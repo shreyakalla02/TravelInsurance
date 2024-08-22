@@ -96,6 +96,15 @@ export default function Home() {
                   <td className="text-left text-gray-700">Tax</td>
                   <td className="text-right text-gray-700">$200.00</td>
               </tr>
+              <tr>
+                  <td className="text-left text-gray-700">This is all hardcoded</td>
+                  <td className="text-right text-gray-700">but will be easy</td>
+              </tr>
+              <tr>
+                  <td className="text-left text-gray-700">to plug into an</td>
+                  <td className="text-right text-gray-700">equation!</td>
+              </tr>
+              
               <tr />
             </thead>
             
